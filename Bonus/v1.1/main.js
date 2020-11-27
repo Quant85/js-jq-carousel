@@ -7,6 +7,9 @@
 //Utiliziamo una classe first e last  per capire quali sono la prima e ultima immagine dello slider
 //Utilizziamo una classe active per aiutarci a capire quale è l’immagine attuale da visualizzare nello slider
 
+
+//Bonus -Clicchiamo sui pallini e mostriamo l’immagine corrispondente
+
 $(function () {
 
     function slideShow (
@@ -33,7 +36,21 @@ $(function () {
         }
     }
 
-    $(".next").on("click", function() {
+    function associatedDot(indexNumber, currentSelector1,
+      currentSelector2, pivotClass, dotImgAssociated,dotSelector) {
+      currentSelector1.removeClass(pivotClass).css("display", "none");
+      dotImgAssociated.eq(indexNumber).addClass(pivotClass).css("display", "inline-block");
+      currentSelector2.removeClass(pivotClass);
+      dotSelector.eq(indexNumber).addClass(pivotClass);
+    }
+
+    var body, next, prev, dots;
+    body = $( "body" );
+    next = $(".next");
+    prev = $(".prev");
+    dots = $(".nav > i.fas");
+
+    next.on("click", function() {
     var currentImg, currentCircle, nextImg, nextCircle, firstImg, firstCircle, classActive, classLast;
 
     currentImg = $(".images img.active");
@@ -49,7 +66,7 @@ $(function () {
     });
 
     
-    $(".prev").on("click", function () {
+    prev.on("click", function () {
     var currentImg, currentCircle, prevImg, prevCircle, classActive, classFirst, lastImg, lastCircle;
 
     currentImg = $(".images img.active");
@@ -64,6 +81,42 @@ $(function () {
     slideShow(currentImg,currentCircle,prevImg,prevCircle,classActive,classFirst,lastImg,lastCircle);
     });
 
+    dots.eq(0).on("click", function () {
+    var currentImg = $(".images img.active"),
+    currentCircle = $("div.nav > i.active"),
+    classActive = "active",
+    linkedImg = $(".images img");
+
+    associatedDot(0, currentImg, currentCircle, classActive, linkedImg,dots);
+    });
+    
+    dots.eq(1).on("click", function () {
+    var currentImg = $(".images img.active"),
+    currentCircle = $("div.nav > i.active"),
+    classActive = "active",
+    linkedImg = $(".images img");
+
+    associatedDot(1, currentImg, currentCircle, classActive, linkedImg,dots);
+    });
+
+    dots.eq(2).on("click", function () {
+    var currentImg = $(".images img.active"),
+    currentCircle = $("div.nav > i.active"),
+    classActive = "active",
+    linkedImg = $(".images img");
+
+    associatedDot(2, currentImg, currentCircle, classActive, linkedImg,dots);
+    });
+
+    dots.eq(3).on("click", function () {
+    var currentImg = $(".images img.active"),
+    currentCircle = $("div.nav > i.active"),
+    classActive = "active",
+    linkedImg = $(".images img");
+
+    associatedDot(3, currentImg, currentCircle, classActive, linkedImg,dots);
+    });
+
     /*.on("keydown....mi permette di "catturare" l'evento associato alla digitazione su tastiera - in tutto -body -
     *Essendo i keyCode associato alla freccia dx è 39 sx è 37, 
     * mediante l'uso del metodo .trigger(), associandolo alla selezione desiderata,
@@ -71,13 +124,13 @@ $(function () {
     *  se viene catturato 39 verra applicato click su .next e quindi la funzione associata,
     *  se viene catturato 37 verra applicato click sulla selezione .prev */
 
-    $( "body" ).on( "keydown", function(e) {
+    body.on( "keydown", function(e) {
 				var code = e.keyCode;
 				if( code == 39 ) {
-					$(".next").trigger( "click" );
+					next.trigger( "click" );
 				}
 				if( code == 37 ) {
-					$(".prev").trigger( "click" );
+					prev.trigger( "click" );
 				}
 				
 			});

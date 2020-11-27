@@ -9,7 +9,7 @@
 
 $(function () {
 
-    /* function slideShow (
+    function slideShow (
       currentSelector1,
       currentSelector2,
       nextOrPrevSelector1,
@@ -31,38 +31,21 @@ $(function () {
           currentSelector2.removeClass(pivotClass);
           
         }
-    } */
+    }
 
+    $(".next").on("click", function() {
+    var currentImg, currentCircle, nextImg, nextCircle, firstImg, firstCircle, classActive, classLast;
 
-  $(".next").on("click", function () {
-    var currentImg, nextImg, firstImg, currentCircle, firstCircle, nextCircle;
-    //console.log("cliccato");
     currentImg = $(".images img.active");
+    currentCircle = $("div.nav > i.active");
     nextImg = currentImg.next();
+    nextCircle = currentCircle.next();
+    classActive = "active";
+    classLast = "last";
     firstImg = $(".images img.first");
     firstCircle = $("div.nav > i.first");
-    currentCircle = $("div.nav > i.active");
-    nextCircle = currentCircle.next();
-    //classActive = "active";
-    //classLast = "last";
-    //console.log(currentImg);
-    //console.log(nextImg);
-    //console.log(firstImmagine);
     
-    //slideShow(currentImg,currentCircle,nextImg,nextCircle,classActive,classLast,firstImg,firstCircle);
-
-    if (currentImg.hasClass("active") && !currentImg.hasClass("last")) {
-      currentImg.removeClass("active").css("display", "none");
-      currentCircle.removeClass("active");
-      nextImg.addClass("active").css("display", "inline-block");
-      nextCircle.addClass("active");
-    } else {
-      currentImg.removeClass("active").css("display", "none");
-      firstImg.addClass("active").css("display", "inline-block");
-      firstCircle.addClass("active");
-      currentCircle.removeClass("active");
-    } 
-
+    slideShow(currentImg,currentCircle,nextImg,nextCircle,classActive,classLast,firstImg,firstCircle);
     });
 
     
@@ -73,25 +56,12 @@ $(function () {
     currentCircle = $("div.nav > i.active");
     prevImg = currentImg.prev();
     prevCircle = currentCircle.prev();
-    //classActive = "active";
-    //classFirst = "first";
+    classActive = "active";
+    classFirst = "first";
     lastImg = $(".images img.last");
     lastCircle = $("div.nav > i.last");
 
-    //slideShow(currentImg,currentCircle,prevImg,prevCircle,classActive,classFirst,lastImg,lastCircle);
-
-    if (currentImg.hasClass("active") && !currentImg.hasClass("first")) {
-      currentImg.removeClass("active").css("display", "none");
-      currentCircle.removeClass("active");
-      prevImg.addClass("active").css("display", "inline-block");
-      prevCircle.addClass("active");
-    }else {
-      currentImg.removeClass("active").css("display", "none");
-      lastImg.addClass("active").css("display", "inline-block");
-      lastCircle.addClass("active");
-      currentCircle.removeClass("active");
-    } 
-
+    slideShow(currentImg,currentCircle,prevImg,prevCircle,classActive,classFirst,lastImg,lastCircle);
     });
 
     /*.on("keydown....mi permette di "catturare" l'evento associato alla digitazione su tastiera - in tutto -body -

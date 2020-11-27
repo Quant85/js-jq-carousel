@@ -7,6 +7,9 @@
 //Utiliziamo una classe first e last  per capire quali sono la prima e ultima immagine dello slider
 //Utilizziamo una classe active per aiutarci a capire quale è l’immagine attuale da visualizzare nello slider
 
+//Utilizzanodo .on("click", function () {....};) - non permetto l'uso delle frecce da tastiera
+//con .onc
+
 $(function () {
 
   $(".next").on("click", function () {
@@ -61,5 +64,23 @@ $(function () {
     }
 
     });
+
+    /*.on("keydown....mi permette di "catturare" l'evento associato alla digitazione su tastiera - in tutto -body -
+    *Essendo i keyCode associato alla freccia dx è 39 sx è 37, 
+    * mediante l'uso del metodo .trigger(), associandolo alla selezione desiderata,
+    *  (in questo caso .next e .prev ai quali abbiamo precedentemente assiociato gli "scorrimenti" della slideShow)
+    *  se viene catturato 39 verra applicato click su .next e quindi la funzione associata,
+    *  se viene catturato 37 verra applicato click sulla selezione .prev */
+
+    $( "body" ).on( "keydown", function(e) {
+				var code = e.keyCode;
+				if( code == 39 ) {
+					$(".next").trigger( "click" );
+				}
+				if( code == 37 ) {
+					$(".prev").trigger( "click" );
+				}
+				
+			});
 
   });

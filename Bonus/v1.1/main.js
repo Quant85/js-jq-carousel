@@ -22,14 +22,14 @@ $(function () {
       firstOrLastSelector1,
       firstOrLastSelector2) { 
         if (currentSelector1.hasClass(pivotClass) && !currentSelector1.hasClass(stopClass)) {
-        currentSelector1.removeClass(pivotClass).css("display", "none");
+        currentSelector1.removeClass(pivotClass);
         currentSelector2.removeClass(pivotClass);
-        nextOrPrevSelector1.addClass(pivotClass).css("display", "inline-block");
+        nextOrPrevSelector1.addClass(pivotClass);
         nextOrPrevSelector2.addClass(pivotClass);
           
         } else {
-          currentSelector1.removeClass(pivotClass).css("display", "none");
-          firstOrLastSelector1.addClass(pivotClass).css("display", "inline-block");
+          currentSelector1.removeClass(pivotClass);
+          firstOrLastSelector1.addClass(pivotClass);
           firstOrLastSelector2.addClass(pivotClass);
           currentSelector2.removeClass(pivotClass);
           
@@ -38,8 +38,8 @@ $(function () {
 
     function associatedDot(indexNumber, currentSelector1,
       currentSelector2, pivotClass, dotImgAssociated,dotSelector) {
-      currentSelector1.removeClass(pivotClass).css("display", "none");
-      dotImgAssociated.eq(indexNumber).addClass(pivotClass).css("display", "inline-block");
+      currentSelector1.removeClass(pivotClass);
+      dotImgAssociated.eq(indexNumber).addClass(pivotClass);
       currentSelector2.removeClass(pivotClass);
       dotSelector.eq(indexNumber).addClass(pivotClass);
     }

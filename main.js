@@ -52,13 +52,13 @@ $(function () {
     //slideShow(currentImg,currentCircle,nextImg,nextCircle,classActive,classLast,firstImg,firstCircle);
 
     if (currentImg.hasClass("active") && !currentImg.hasClass("last")) {
-      currentImg.removeClass("active").css("display", "none");
+      currentImg.removeClass("active");
       currentCircle.removeClass("active");
-      nextImg.addClass("active").css("display", "inline-block");
+      nextImg.addClass("active");
       nextCircle.addClass("active");
     } else {
-      currentImg.removeClass("active").css("display", "none");
-      firstImg.addClass("active").css("display", "inline-block");
+      currentImg.removeClass("active");
+      firstImg.addClass("active");
       firstCircle.addClass("active");
       currentCircle.removeClass("active");
     } 
@@ -81,13 +81,13 @@ $(function () {
     //slideShow(currentImg,currentCircle,prevImg,prevCircle,classActive,classFirst,lastImg,lastCircle);
 
     if (currentImg.hasClass("active") && !currentImg.hasClass("first")) {
-      currentImg.removeClass("active").css("display", "none");
+      currentImg.removeClass("active");
       currentCircle.removeClass("active");
-      prevImg.addClass("active").css("display", "inline-block");
+      prevImg.addClass("active");
       prevCircle.addClass("active");
     }else {
-      currentImg.removeClass("active").css("display", "none");
-      lastImg.addClass("active").css("display", "inline-block");
+      currentImg.removeClass("active");
+      lastImg.addClass("active");
       lastCircle.addClass("active");
       currentCircle.removeClass("active");
     } 
